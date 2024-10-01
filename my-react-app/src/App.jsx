@@ -1,9 +1,9 @@
-import UserGreeting from './userGreeting';
+import MyComponent from "./MyComponent.jsx";
 
 function App() {
   return (
     <>
-      <UserGreeting isLoggedIn={false} userName="Amiyo" />
+      <MyComponent />
     </>
   );
 }
