@@ -1,33 +1,17 @@
-function List() {
-    const list=[
-        {name:'orange' , calories : 95},
-        {name :'mango' , calories : 140},
-        {name:'lichee' , calories:45},
-        {name:'banana', calories:150}];
-    const sortedList = list.sort((a,b)=> a.name.localeCompare(b.name));   
-    const newArray=list.map( (fruit) =>    <li>{fruit.name} : {fruit.calories}</li>    ); 
+function List(props) {
+    
+    const fruits = props.fruits;
 
 
-    const sortedCalories = list.sort((a,b)=> a.calories-b.calories);
-    const sortedByCalories = sortedCalories.map(fruit=> <li>{fruit.name} : {fruit.calories} </li>)
-
-    const sortedArray=sortedList.map( (fruit) =>    <li>{fruit.name} : {fruit.calories}</li>    );
-
-    const filterCalories = list.filter( fruit =>{ return fruit.calories>100 })
-    const filterByCalories = filterCalories.map(fruit=> <li>{fruit.name} : {fruit.calories} </li>)
+    const listItems = fruits.map( fruit =><li> {fruit.name} : {fruit.calories}</li>)
 
         
     return (
     <>
+    <h2>{props.category}</h2>
     <ul>
-        {filterByCalories}
-    </ul>  
-       <ul>
-        {sortedByCalories}
-       </ul>
-       <ul>
-        {newArray}
-       </ul>
+        {listItems}
+    </ul>
 
     </> 
             );
