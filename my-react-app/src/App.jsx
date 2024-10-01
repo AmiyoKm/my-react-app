@@ -1,9 +1,9 @@
-import UserGreeting from './userGreeting';
+import ColorPicker from "./ColorPicker.jsx";
 
 function App() {
   return (
     <>
-      <UserGreeting isLoggedIn={false} userName="Amiyo" />
+      <ColorPicker />
     </>
   );
 }

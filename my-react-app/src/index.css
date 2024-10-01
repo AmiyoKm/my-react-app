@@ -1,61 +1,23 @@
-.card{
-  border  :1px solid rgb(195, 195, 195);
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0,0,0,.1);
-  padding :20px;
-  margin:10px;
-  text-align:center;
-  width:250px;
-  display:inline-block;
+body{
+  font-family:Arial, Helvetica, sans-serif
 }
-.card .card-image{
-  max-width: 60%;
-  height:auto;
-  object-fit: cover;
-  border-radius:50%;
-  margin-bottom:10px;
-  
-}
-.card .card-title{
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size:24px;
-  margin:0px;
-  color:rgb(21, 71, 251)
-}
-.card .card-text{
-  font-family:Arial, Helvetica, sans-serif;
-  color:rgb(21, 71, 251)
+.color-picker-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.button{
-  background-color:rgb(21, 71, 251);
-  color:white;
-  padding:10px 20px;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
+h1{
+  margin:50px;
+  font-size: 3rem;
 }
-.greeting{
-  display:inline-block;
-  height:100px;
-  width:500px;
-  background-color: green;
-  color:white;
-  font:arial;
-  padding:10px;
-  font-size:20px;
-  border: 1px solid black;
-}
-
-.login{
-  display:inline-block;
-  height:100px;
-  width:500px;
-  background-color: rgb(226, 11, 11);
-  color:white;
-  font:arial;
-  padding:10px;
-  font-size:20px;
-  border: 1px solid black;
+.color-display{
+  width: 300px;
+  height: 300px;
+  border-radius: 10%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  transition:  0.25s ease;
 }
