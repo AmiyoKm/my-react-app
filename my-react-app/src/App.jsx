@@ -1,9 +1,9 @@
-import UserGreeting from './userGreeting';
+import Counter from './Counter.jsx';
 
 function App() {
   return (
     <>
-      <UserGreeting isLoggedIn={false} userName="Amiyo" />
+      <Counter />
     </>
   );
 }
