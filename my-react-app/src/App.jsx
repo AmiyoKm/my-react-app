@@ -1,9 +1,9 @@
-import UserGreeting from './userGreeting';
+import Button from './Button.jsx';
 
 function App() {
   return (
     <>
-      <UserGreeting isLoggedIn={false} userName="Amiyo" />
+      <Button />
     </>
   );
 }
