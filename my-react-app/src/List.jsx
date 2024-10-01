@@ -19,7 +19,11 @@ function List(props) {
             );
         }
 List.propTypes = {
-    fruits: PropTypes.array,
+    fruits: PropTypes.arrayOf(PropTypes.shape({
+        id:PropTypes.number,
+        name : PropTypes.string,
+        calories : PropTypes.number
+    })),
     category : PropTypes.string
 }
 export default List;
