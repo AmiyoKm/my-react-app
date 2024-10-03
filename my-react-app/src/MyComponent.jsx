@@ -1,57 +1,54 @@
 import React ,{useState} from "react";
 import dayjs from "dayjs";
 function MyComponent(props) {
-    let dateFrom =  dayjs();
-    let year = dateFrom.year();
-    const [cars,setCars]=useState([]);
-    const [carYear , setCarYear]=useState(year);
-    const [carMake,  setCarMake]=useState('');
-    const [carModel , setCarModel]= useState('');
+    const [task,setTask]= useState(["walking","Sleeping","Eating","Running"]);
+    const [newTask,setNewTask]=useState();
 
-    function handleAddCar(){
-            let newCar={
-                year:carYear,
-                make:carMake,
-                model:carModel
-            }
-            setCars(c=>[...c,newCar]);
-            setCarYear(year);
-            setCarMake('');
-            setCarModel('');
+    function showingTask(e){
+        setNewTask(e.target.value)
     }
+    function addTask(){
+        
+        if(!newTask=="")
+        setTask(t=>[...t,newTask]);
+        setNewTask('');
 
-    function handleRemoveCar(index){
-        setCars(c=>c.filter((element,i)=>  i!==index))
+       
     }
-
-    function handleYearChange(e){
-       setCarYear(e.target.value);
+    function deleteTask(index){
+        setTask(t=>t.filter((_,i)=>i!==index));
     }
-
-    function handleMakeChange(e){
-        setCarMake(e.target.value);
+    function downTask(index){
+        if(index){
+            const updatedTask = [...task];
+        [updatedTask[index],updatedTask[index+1]]=[updatedTask[index+1],updatedTask[index]];
+        setTask(updatedTask);
+        }
     }
-
-    function handleModelChange(e){
-        setCarModel(e.target.value);
+    function upTask(index){
+        if(index>0){
+            const updatedTask = [...task];
+        [updatedTask[index],updatedTask[index-1]]=[updatedTask[index-1],updatedTask[index]];
+        setTask(updatedTask);
+        }
+        
     }
+    return <>
+        <h1>To do list</h1>
+        <ol>
+           {task.map((t,index) => <li key={index}><span>{t}</span>
+           <button onClick={()=>deleteTask(index)}>Delete</button>
+           <button onClick={()=>upTask(index)}>up</button>
+            <button onClick={()=>downTask(index)}>down</button>
 
-    return <div>
-        <h2>List of Car objects</h2>
-        <ul>
-            {cars.map((car,index)=>
-                <li key={index} onClick={()=>handleRemoveCar(index)}>{car.year} {car.make} {car.model}</li>
-            )}
-        </ul>
+           
+           </li>)}
+        </ol>
+            <input placeholder="enter task" value={newTask} onChange={showingTask}></input>
+            <button onClick={()=>addTask()}>Add</button>
+            
 
-        <input type="number" placeholder="Year" value={carYear}
-        onChange={handleYearChange}></input>
-        <input type="text" placeholder="Make" value={carMake}
-        onChange={handleMakeChange}></input>
-        <input type="text" placeholder="Model" value={carModel}
-        onChange={handleModelChange}></input>
-        <button onClick={handleAddCar}>Add car</button>
-    </div>
+    </>
 }
 
 export default MyComponent;
