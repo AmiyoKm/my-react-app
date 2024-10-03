@@ -1,9 +1,9 @@
-import MyComponent1 from './MyComponent1.jsx';
+import MyComponent from './MyComponent.jsx';
 
 function App() {
   return (
     <>
-       <MyComponent1 />
+       <MyComponent />
     </>
   );
 }
