@@ -1,57 +1,29 @@
-import React ,{useState} from "react";
+import React , {useState , useEffect} from "react";
 import dayjs from "dayjs";
-function MyComponent(props) {
-    let dateFrom =  dayjs();
-    let year = dateFrom.year();
-    const [cars,setCars]=useState([]);
-    const [carYear , setCarYear]=useState(year);
-    const [carMake,  setCarMake]=useState('');
-    const [carModel , setCarModel]= useState('');
+import randomColor from "randomcolor"
 
-    function handleAddCar(){
-            let newCar={
-                year:carYear,
-                make:carMake,
-                model:carModel
-            }
-            setCars(c=>[...c,newCar]);
-            setCarYear(year);
-            setCarMake('');
-            setCarModel('');
-    }
+function MyComponent(){
+    const date= dayjs();
+        const [time,setTime]= useState( date.format('hh:mm:ss a'));
+        const [color,setColor]= useState(randomColor());
 
-    function handleRemoveCar(index){
-        setCars(c=>c.filter((element,i)=>  i!==index))
-    }
+    useEffect(()=>{
+       
+        setInterval(()=>{
+            let newDate =dayjs();
+            let newTime = newDate.format('hh:mm:ss a');
+            let timeout=setTime(newTime);
+            setColor(randomColor());
+        },1000)
+        
+        
 
-    function handleYearChange(e){
-       setCarYear(e.target.value);
-    }
+    },[]);
 
-    function handleMakeChange(e){
-        setCarMake(e.target.value);
-    }
 
-    function handleModelChange(e){
-        setCarModel(e.target.value);
-    }
 
-    return <div>
-        <h2>List of Car objects</h2>
-        <ul>
-            {cars.map((car,index)=>
-                <li key={index} onClick={()=>handleRemoveCar(index)}>{car.year} {car.make} {car.model}</li>
-            )}
-        </ul>
-
-        <input type="number" placeholder="Year" value={carYear}
-        onChange={handleYearChange}></input>
-        <input type="text" placeholder="Make" value={carMake}
-        onChange={handleMakeChange}></input>
-        <input type="text" placeholder="Model" value={carModel}
-        onChange={handleModelChange}></input>
-        <button onClick={handleAddCar}>Add car</button>
-    </div>
+        return <div className="container">
+        <h1 className='clock' style={{color:color}}>{time}</h1>
+        </div>
 }
-
 export default MyComponent;
