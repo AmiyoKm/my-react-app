@@ -25,7 +25,7 @@ function StopWatch(){
 
             },10)
         }
-        else if(!isActive){
+        else if(!isActive && elapsedTime!==0){
             clearInterval(interval);
         }
 
@@ -34,7 +34,9 @@ function StopWatch(){
 
     ,[isActive,time]);
     function start(){
+        
         setIsActive(true);
+        
     }
     
     function stop(){
